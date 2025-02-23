@@ -34,14 +34,14 @@ fn print_tree(tree: &TSTree) {
     println!("{}", BANNER.truecolor(166, 53, 25).bold());
 
     for (channel, clients) in tree {
-        if clients.len() > 0 {
-            println!("    \u{25BA} {}", channel.green());
-        } else {
-            println!("    \u{25BA} {}", channel.dimmed());
-        }
+        let channel_name = match clients.len() {
+            0 => channel.dimmed(),
+            _ => channel.green(),
+        };
+        println!("    {} {}", "\u{25BA}", channel_name);
 
         for c in clients {
-            println!("      \u{2605} {}", c);
+            println!("      {} {}", "\u{2605}".yellow(), c);
         }
     }
 
