@@ -1,20 +1,20 @@
 use anyhow::Result;
 use colored::Colorize;
-use serde::{Deserialize, Serialize};
+use serde::Deserialize;
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize)]
 struct TSUser {
     name: String,
     channel_id: u32,
 }
 
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize)]
 struct TSChannel {
     id: u32,
     name: String,
 }
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Deserialize)]
 struct LiveResponse {
     clients: Vec<TSUser>,
     channels: Vec<TSChannel>,
